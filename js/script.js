@@ -1,4 +1,39 @@
 // ==========================================
+// DARK MODE TOGGLE
+// ==========================================
+
+const darkModeToggle = document.getElementById('darkModeToggle');
+const htmlElement = document.documentElement;
+
+// Load dark mode preference from localStorage
+const isDarkMode = localStorage.getItem('darkMode') === 'true';
+if (isDarkMode) {
+    document.body.classList.add('dark-mode');
+    if (darkModeToggle) {
+        darkModeToggle.textContent = '☀️';
+        darkModeToggle.classList.add('active');
+    }
+}
+
+// Add dark mode toggle functionality
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        // Update button emoji and state
+        const isDark = document.body.classList.contains('dark-mode');
+        darkModeToggle.textContent = isDark ? '☀️' : '🌙';
+        darkModeToggle.classList.toggle('active');
+        
+        // Save preference to localStorage
+        localStorage.setItem('darkMode', isDark);
+        
+        // Log the state
+        console.log('Dark mode:', isDark ? 'enabled' : 'disabled');
+    });
+}
+
+// ==========================================
 // MOBILE MENU TOGGLE
 // ==========================================
 
@@ -354,6 +389,80 @@ function isElementInViewport(element) {
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
+
+// ==========================================
+// INTERACTIVE FAQ ACCORDION
+// ==========================================
+
+const faqQuestions = document.querySelectorAll('.faq-question');
+faqQuestions.forEach(question => {
+    // Add cursor pointer style
+    question.style.cursor = 'pointer';
+    
+    // Create toggle indicator
+    const indicator = document.createElement('span');
+    indicator.className = 'faq-toggle-icon';
+    indicator.textContent = '+';
+    indicator.style.cssText = `
+        display: inline-block;
+        float: right;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+        color: #10b981;
+    `;
+    question.appendChild(indicator);
+    
+    // Get the answer element (next sibling p tag)
+    const answer = question.nextElementSibling;
+    if (answer) {
+        answer.style.maxHeight = '0';
+        answer.style.overflow = 'hidden';
+        answer.style.transition = 'max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease';
+        answer.style.opacity = '0';
+        answer.style.marginTop = '0';
+    }
+    
+    // Add click event listener
+    question.addEventListener('click', function() {
+        const icon = this.querySelector('.faq-toggle-icon');
+        const answer = this.nextElementSibling;
+        
+        if (answer) {
+            const isOpen = answer.style.maxHeight !== '0px' && answer.style.maxHeight !== '';
+            
+            if (isOpen) {
+                // Close the accordion
+                answer.style.maxHeight = '0';
+                answer.style.opacity = '0';
+                answer.style.marginTop = '0';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Open the accordion
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                answer.style.opacity = '1';
+                answer.style.marginTop = '15px';
+                icon.style.transform = 'rotate(45deg)';
+            }
+        }
+    });
+});
+
+// Add hover effect to FAQ items
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        if (!this.querySelector('.faq-answer').style.maxHeight || 
+            this.querySelector('.faq-answer').style.maxHeight === '0px') {
+            this.style.transform = 'translateX(5px)';
+        }
+    });
+    
+    item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateX(0)';
+    });
+    
+    this.style.transition = 'transform 0.3s ease';
+});
 
 // ==========================================
 // INITIALIZATION

@@ -13,6 +13,108 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #EDD5BA;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .navbar {
+    background-color: #2a2a2a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .nav-link {
+    color: #b0b0b0;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+    color: #10b981;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #0d9567 0%, #044f38 100%);
+}
+
+body.dark-mode .features,
+body.dark-mode .about-section,
+body.dark-mode .services-section,
+body.dark-mode .pricing-section,
+body.dark-mode .blog-section,
+body.dark-mode .contact-wrapper,
+body.dark-mode .contact-section,
+body.dark-mode .map-section,
+body.dark-mode .faq-section,
+body.dark-mode .newsletter-section {
+    background-color: #242424;
+}
+
+body.dark-mode .feature-card,
+body.dark-mode .service-card,
+body.dark-mode .blog-card,
+body.dark-mode .pricing-card,
+body.dark-mode .team-member,
+body.dark-mode .value-item,
+body.dark-mode .faq-item {
+    background-color: #333333;
+    color: #e0e0e0;
+    border: 1px solid #444444;
+}
+
+body.dark-mode .feature-card:hover,
+body.dark-mode .service-card:hover,
+body.dark-mode .blog-card:hover,
+body.dark-mode .pricing-card:hover,
+body.dark-mode .team-member:hover,
+body.dark-mode .value-item:hover,
+body.dark-mode .faq-item:hover {
+    background-color: #3a3a3a;
+    border-color: #555555;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #ffffff;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: #333333;
+    color: #e0e0e0;
+    border-color: #555555;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #999999;
+}
+
+body.dark-mode .btn-primary,
+body.dark-mode .btn-secondary {
+    background-color: #10b981;
+    color: white;
+}
+
+body.dark-mode .btn-primary:hover,
+body.dark-mode .btn-secondary:hover {
+    background-color: #059669;
+}
+
+body.dark-mode .faq-question {
+    color: #e0e0e0;
+}
+
+body.dark-mode .faq-toggle-icon {
+    color: #10b981;
 }
 
 .container {
@@ -89,6 +191,36 @@ a {
     background-color: #fff;
     border-radius: 2px;
     transition: all 0.3s ease;
+}
+
+/* ==========================================
+   DARK MODE TOGGLE
+   ========================================== */
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dark-mode-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-btn:hover {
+    transform: scale(1.2);
+}
+
+.dark-mode-btn.active {
+    opacity: 0.8;
 }
 
 /* ==========================================
@@ -852,6 +984,15 @@ a {
         transform: rotate(-45deg) translate(7px, -7px);
     }
 
+    .nav-controls {
+        gap: 0.5rem;
+    }
+
+    .dark-mode-btn {
+        font-size: 1.2rem;
+        padding: 5px 8px;
+    }
+
     .hero-content h1 {
         font-size: 2rem;
     }
@@ -930,5 +1071,14 @@ a {
     .faq-section,
     .newsletter-section {
         padding: 1.5rem;
+    }
+
+    /* Dark Mode Mobile Styles */
+    body.dark-mode .nav-menu {
+        background-color: #2a2a2a;
+    }
+
+    body.dark-mode .nav-menu.active {
+        display: flex;
     }
 }

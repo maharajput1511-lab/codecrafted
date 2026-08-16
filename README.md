@@ -1,4 +1,4 @@
-# My Website - 5 Page Static Website
+# Code Crafted - 5 Page Static Website
 
 A professional, responsive 5-page static website built with HTML5, CSS3, and JavaScript.
 
@@ -197,7 +197,7 @@ To deploy this website:
 
 ## ✅ Checklist for Customization
 
-- [ ] Update all instances of "My Website" with your site name
+- [x] Update all instances with "Code Crafted"
 - [ ] Change the logo and branding
 - [ ] Update contact information
 - [ ] Add your services/products
